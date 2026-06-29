@@ -50,11 +50,15 @@ def gui_setup():
         
 
     file_button = customtkinter.CTkButton(master=file_frame,text="Click here to find your Excel doc in the File Explorer" \
-    "", fg_color="#397031",hover_color= '#579e4d',text_color="white",width=200,height=200, command=display_filename)
+    "", fg_color="#870303",hover_color= '#a31c1c',text_color="white",width=200,height=200, command=display_filename)
     file_button.grid(row=0,column=0)
 
-
-
+# this layout is weird
+    def convert_pressed():
+        if file_name == "" :
+            print("Please select a file first")
+            return
+        excel_to_csv(file_name)
 
 
     # Convert button
@@ -63,7 +67,7 @@ def gui_setup():
 
 
 
-    convert_button = customtkinter.CTkButton(master=button_frame, text="Convert", fg_color='black',width=200,height=50,command=excel_to_csv(file_name)) # currently the button won't do anything, add functionality in the last argument 
+    convert_button = customtkinter.CTkButton(master=button_frame, text="Convert", fg_color='black',width=200,height=50, command=convert_pressed) # currently the button won't do anything, add functionality in the last argument 
     # # convert_button.place(relx=0.5,rely=0.9,anchor=tkinter.CENTER)
     convert_button.grid(row=1,column=1,pady=70)
 
